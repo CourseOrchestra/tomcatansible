@@ -1,0 +1,59 @@
+- name: install required packages
+  apt: 
+    name: [letsencrypt,
+           libreadline-dev, libncurses5-dev, libpcre3-dev,
+           libssl-dev, perl, make, build-essential, curl]
+    update_cache: yes
+
+#####TOMCAT INSTALLATION #####
+- name: tomcat group
+  group:
+    name: "{{ tomcat_group }}"
+    state: present
+
+- name: get and unarchive tomcat tarball
+  unarchive:
+    src: http://ftp.tudelft.nl/apache/tomcat/tomcat-8/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz
+    dest: /opt
+    remote_src: True
+    creates: /opt/apache-tomcat-{{ tomcat_version }}
+    group: "{{ tomcat_group }}"
+  register: tomcat_download
+
+- name: create symlink
+  file:
+    dest: /opt/tomcat
+    src: /opt/apache-tomcat-{{ tomcat_version }}
+    state: link
+
+- name: tomcat user
+  user:
+    name: tomcat
+    home: /opt/tomcat
+    group: "{{ tomcat_group }}"
+    shell: /bin/false
+
+- name: chown
+  file: 
+    path: /opt/apache-tomcat-{{ tomcat_version }}
+    owner: tomcat
+    recurse: yes
+
+- name: copy tomcat config file
+  copy:
+    src: files/server.xml
+    dest: /opt/tomcat/conf/server.xml
+    mode: "0644"
+      
+- name: copy tomcat service config file
+  template:
+    src: templates/tomcat.service.j2
+    dest: /etc/systemd/system/tomcat.service
+    mode: "0644"
+
+- name: Start tomcat service
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: tomcat 
