@@ -9,7 +9,7 @@ node {
         a folder with arbitrary name, so we need to
         let Ansible know where to find 'tomcatansible' role*/
         sh 'mkdir -p molecule/default/roles'
-        sh 'ln -s `pwd` molecule/default/roles/tomcatansible'
+        sh 'ln -sf `pwd` molecule/default/roles/tomcatansible'
         sh 'molecule test'
      }
    } catch(all) {
