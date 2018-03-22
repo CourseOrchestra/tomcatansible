@@ -1,11 +1,4 @@
-- name: install required packages
-  apt: 
-    name: [letsencrypt,
-           libreadline-dev, libncurses5-dev, libpcre3-dev,
-           libssl-dev, perl, make, build-essential, curl]
-    update_cache: yes
-
-#####TOMCAT INSTALLATION #####
+---
 - name: tomcat group
   group:
     name: "{{ tomcat_group }}"
@@ -34,7 +27,7 @@
     shell: /bin/false
 
 - name: chown
-  file: 
+  file:
     path: /opt/apache-tomcat-{{ tomcat_version }}
     owner: tomcat
     recurse: yes
@@ -44,7 +37,7 @@
     src: files/server.xml
     dest: /opt/tomcat/conf/server.xml
     mode: "0644"
-      
+
 - name: copy tomcat service config file
   template:
     src: templates/tomcat.service.j2
@@ -56,4 +49,4 @@
     state: restarted
     daemon_reload: yes
     enabled: yes
-    name: tomcat 
+    name: tomcat
