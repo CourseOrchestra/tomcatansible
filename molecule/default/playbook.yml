@@ -5,6 +5,10 @@
     - role: ansiblebit.oracle-java
     - role: tomcatansible
   tasks:
+    - name: install curl for testing purposes
+      apt:
+        name: curl
+
     - name: start tomcat service
       service:
         name: tomcat

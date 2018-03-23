@@ -140,3 +140,4 @@ $RECYCLE.BIN/
 
 # Molecule
 .molecule
+.pytest_cache
