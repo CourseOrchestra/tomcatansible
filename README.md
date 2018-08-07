@@ -5,7 +5,10 @@ Jenkins [![Build Status](https://ci.corchestra.ru/buildStatus/icon?job=tomcatans
 
 Travis [![Build Status](https://travis-ci.org/CourseOrchestra/tomcatansible.svg?branch=master)](https://travis-ci.org/CourseOrchestra/tomcatansible)
 
-Installation of [Apache Tomcat](http://tomcat.apache.org/) service bound to localhost. This role is prerequisite for Showcase and Mellophone installations.
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-CourseOrchestra.tomcat-blue.svg)](https://galaxy.ansible.com/CourseOrchestra/tomcat/)
+
+
+Installation of [Apache Tomcat](http://tomcat.apache.org/) service bound to localhost. This role is prerequisite for [Showcase](https://github.com/CourseOrchestra/showcaseansible) and [Mellophone](https://github.com/CourseOrchestra/mellophoneansible) installations.
 
 Requirements
 ------------
