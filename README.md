@@ -1,8 +1,12 @@
 Tomcat
 =========
 
-[![Build Status](https://ci.corchestra.ru/buildStatus/icon?job=tomcatansible/master)](https://ci.corchestra.ru/job/tomcatansible/job/master/)
+Jenkins [![Build Status](https://ci.corchestra.ru/buildStatus/icon?job=tomcatansible/master)](https://ci.corchestra.ru/job/tomcatansible/job/master/)
+
+Travis [![Build Status](https://travis-ci.org/CourseOrchestra/tomcatansible.svg?branch=master)](https://travis-ci.org/CourseOrchestra/tomcatansible)
+
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-CourseOrchestra.tomcat-blue.svg)](https://galaxy.ansible.com/CourseOrchestra/tomcat/)
+
 
 Installation of [Apache Tomcat](http://tomcat.apache.org/) service bound to localhost. This role is prerequisite for [Showcase](https://github.com/CourseOrchestra/showcaseansible) and [Mellophone](https://github.com/CourseOrchestra/mellophoneansible) installations.
 
@@ -14,9 +18,12 @@ Java 8 (Oracle)
 Role Variables
 --------------
 
-* tomcat_version: Tomcat version to install
-* tomcat_group: the group for tomcat service user (default valute is tomcat)
-
+| parameter           | default value | description            |
+|---------------------|---------------|------------------------|
+| tomcat_version      | 8.5.32        | version to install     |
+| tomcat_user         | tomcat        | service user           |
+| tomcat_group        | tomcat        | service user group     |
+| tomcat_bind_address | 127.0.0.1     | HTTP connector address |
 
 Example Playbook
 ----------------
