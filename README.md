@@ -1,7 +1,9 @@
 Tomcat
 =========
 
-[![Build Status](https://ci.corchestra.ru/buildStatus/icon?job=tomcatansible/master)](https://ci.corchestra.ru/job/tomcatansible/job/master/)
+Jenkins [![Build Status](https://ci.corchestra.ru/buildStatus/icon?job=tomcatansible/master)](https://ci.corchestra.ru/job/tomcatansible/job/master/)
+
+Travis [![Build Status](https://travis-ci.org/CourseOrchestra/tomcatansible.svg?branch=master)](https://travis-ci.org/CourseOrchestra/tomcatansible)
 
 Installation of [Apache Tomcat](http://tomcat.apache.org/) service bound to localhost. This role is prerequisite for Showcase and Mellophone installations.
 
@@ -13,9 +15,12 @@ Java 8 (Oracle)
 Role Variables
 --------------
 
-* tomcat_version: Tomcat version to install
-* tomcat_group: the group for tomcat service user (default valute is tomcat)
-
+| parameter           | default value | description            |
+|---------------------|---------------|------------------------|
+| tomcat_version      | 8.5.32        | version to install     |
+| tomcat_user         | tomcat        | service user           |
+| tomcat_group        | tomcat        | service user group     |
+| tomcat_bind_address | 127.0.0.1     | HTTP connector address |
 
 Example Playbook
 ----------------

@@ -12,9 +12,23 @@ def test_executables_folder(host):
     assert tomcat.is_symlink
 
 
+def test_config_file(host):
+    config = host.file('/opt/tomcat/conf/server.xml')
+    assert config.exists
+    assert config.contains('Connector')
+
+
 def test_service(host):
     tomcat = host.service('tomcat')
     assert tomcat.is_running
+
+
+def test_user_group(host):
+    user = host.user('tomcat')
+    group = host.group('tomcat')
+    assert user.exists
+    assert group.exists
+    assert user.gid == group.gid
 
 
 def test_curl_output(host):
