@@ -48,3 +48,4 @@
     daemon_reload: yes
     enabled: yes
     name: tomcat
+  when: ansible_connection != 'docker'
