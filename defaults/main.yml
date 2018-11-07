@@ -1,5 +1,5 @@
 ---
-tomcat_version: 8.5.32
+tomcat_version: 8.5.34
 tomcat_user: tomcat
 tomcat_group: tomcat
 tomcat_bind_address: 127.0.0.1
